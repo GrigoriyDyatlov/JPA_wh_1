@@ -15,15 +15,6 @@ public class Person {
     @EmbeddedId
     private PersonID id;
 
-    @Column(name = "name", length = 50)
-    private String name = id.getName();
-
-    @Column(name = "surname", length = 50)
-    private String surname = id.getSurname();
-
-    @Column(name = "age")
-    private Integer age = id.getAge();
-
     @Column(name = "city_of_living", length = 100)
     private String city_of_living;
 
