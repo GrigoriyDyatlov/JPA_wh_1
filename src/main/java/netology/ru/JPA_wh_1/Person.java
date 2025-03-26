@@ -1,9 +1,6 @@
 package netology.ru.JPA_wh_1;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,8 +9,19 @@ import lombok.Setter;
 @Entity
 @Table(name = "person")
 public class Person {
-    @EmbeddedId
-    private PersonID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "name", length = 50)
+    private String name;
+
+    @Column(name = "surname", length = 55)
+    private String surname;
+
+    @Column(name = "age")
+    private Integer age;
 
     @Column(name = "city_of_living", length = 100)
     private String city_of_living;
@@ -22,4 +30,15 @@ public class Person {
     private String phone_number;
 
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", age=" + age +
+                ", city_of_living='" + city_of_living + '\'' +
+                ", phone_number='" + phone_number + '\'' +
+                '}';
+    }
 }
