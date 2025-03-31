@@ -1,4 +1,4 @@
-package netology.ru.JPA_wh_1;
+package netology.ru.JPA_wh_1.person;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

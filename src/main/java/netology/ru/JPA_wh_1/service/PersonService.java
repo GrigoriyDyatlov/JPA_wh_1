@@ -1,6 +1,8 @@
-package netology.ru.JPA_wh_1;
+package netology.ru.JPA_wh_1.service;
 
 import lombok.RequiredArgsConstructor;
+import netology.ru.JPA_wh_1.person.Person;
+import netology.ru.JPA_wh_1.repository.PersonRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

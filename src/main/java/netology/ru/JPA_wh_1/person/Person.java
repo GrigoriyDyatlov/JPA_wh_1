@@ -1,4 +1,4 @@
-package netology.ru.JPA_wh_1;
+package netology.ru.JPA_wh_1.person;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
@@ -16,10 +16,10 @@ public class Person {
     private PersonID id;
 
     @Column(name = "city_of_living", length = 100)
-    private String city_of_living;
+    private String cityOfLiving;
 
     @Column(name = "phone_number", length = 11)
-    private String phone_number;
+    private String phoneNumber;
 
 
 }
