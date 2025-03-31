@@ -1,6 +1,8 @@
-package netology.ru.JPA_wh_1;
+package netology.ru.JPA_wh_1.controller;
 
 import lombok.RequiredArgsConstructor;
+import netology.ru.JPA_wh_1.person.Person;
+import netology.ru.JPA_wh_1.service.PersonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +20,8 @@ public class PersonController {
     private final PersonService personService;
 
     @GetMapping("/by-city")
-    public @ResponseBody List<Person> findAllByCity_of_living(@RequestParam String city) {
-        return personService.findAllByCity_of_living(city);
+    public @ResponseBody List<Person> findAllByCityOfLiving(@RequestParam String city) {
+        return personService.findAllByCityOfLiving(city);
     }
 
     @GetMapping("/byNameAndSurname")
