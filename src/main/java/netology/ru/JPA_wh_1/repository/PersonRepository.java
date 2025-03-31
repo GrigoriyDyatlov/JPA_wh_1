@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PersonRepository extends JpaRepository<Person, Long> {
-    List<Person> findAllByCityOfLiving(String city_of_living);
+    List<Person> findAllByCityOfLiving(String city);
 
     List<Person> findByAgeLessThanOrderByAgeAsc(Integer age);
 
