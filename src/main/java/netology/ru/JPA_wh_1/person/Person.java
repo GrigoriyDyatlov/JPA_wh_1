@@ -19,7 +19,7 @@ public class Person {
     private String cityOfLiving;
 
     @Column(name = "phone_number", length = 11)
-    private String phone_number;
+    private String phoneNumber;
 
     public String getName() {
         return personID.getName();
@@ -40,7 +40,7 @@ public class Person {
                 ", surname='" + personID.getSurname() + '\'' +
                 ", age=" + personID.getAge() +
                 ", city_of_living='" + cityOfLiving + '\'' +
-                ", phone_number='" + phone_number + '\'' +
+                ", phone_number='" + phoneNumber + '\'' +
                 '}';
     }
 }
