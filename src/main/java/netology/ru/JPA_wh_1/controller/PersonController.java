@@ -4,10 +4,7 @@ import lombok.RequiredArgsConstructor;
 import netology.ru.JPA_wh_1.person.Person;
 import netology.ru.JPA_wh_1.service.PersonService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,5 +29,10 @@ public class PersonController {
     @GetMapping("/byAge")
     public @ResponseBody List<Person> findByAgeLessThanOrderByAgeAsc(@RequestParam Integer age) {
         return personService.findByAgeLessThanOrderByAgeAsc(age);
+    }
+
+    @PostMapping("/add")
+    public @ResponseBody Person addPerson(@RequestBody Person person) {
+        return personService.addPerson(person);
     }
 }

@@ -24,4 +24,8 @@ public class PersonService {
     public Optional<List<Person>> findByNameIgnoreCaseAndSurnameIgnoreCase(String name, String surname) {
         return personRepository.findByNameIgnoreCaseAndSurnameIgnoreCase(name, surname);
     }
+
+    public Person addPerson (Person person){
+       return personRepository.save(person);
+    }
 }
