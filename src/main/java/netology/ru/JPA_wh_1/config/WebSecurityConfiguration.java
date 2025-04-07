@@ -2,8 +2,8 @@ package netology.ru.JPA_wh_1.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -15,14 +15,12 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity(securedEnabled = true)
 public class WebSecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                .requestMatchers(HttpMethod.POST, "/persons/add").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.GET, "/persons/byAge").authenticated()
-                .requestMatchers(HttpMethod.GET, "/persons/by-city").permitAll()
                 .anyRequest().authenticated());
         http.headers(Customizer.withDefaults());
         http.sessionManagement(Customizer.withDefaults());
@@ -33,20 +31,23 @@ public class WebSecurityConfiguration {
         return http.build();
     }
 
-    public PasswordEncoder encoder () {
+    public PasswordEncoder encoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     public UserDetailsService inMemoryUserDetailsService() {
         User.UserBuilder users = User.builder();
         InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
-        userDetailsManager.createUser(users.username("admin")
-                .password(encoder().encode("admin"))
+        userDetailsManager.createUser(users.username("DELETE")
+                .password(encoder().encode("qwerty"))
                 .roles("ADMIN")
                 .build());
-        userDetailsManager.createUser(users.username("user")
+        userDetailsManager.createUser(users.username("READ")
                 .password(encoder().encode("user"))
                 .roles("USER")
+                .build());
+        userDetailsManager.createUser(users.username("WRITE")
+                .password(encoder().encode("qwerty"))
                 .build());
         return userDetailsManager;
     }

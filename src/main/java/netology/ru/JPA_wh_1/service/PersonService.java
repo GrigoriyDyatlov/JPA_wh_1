@@ -25,7 +25,11 @@ public class PersonService {
         return personRepository.findByNameIgnoreCaseAndSurnameIgnoreCase(name, surname);
     }
 
-    public Person addPerson (Person person){
-       return personRepository.save(person);
+    public Person addPerson(Person person) {
+        return personRepository.save(person);
+    }
+
+    public Optional<Person> getByName(String name) {
+        return personRepository.getByName(name);
     }
 }

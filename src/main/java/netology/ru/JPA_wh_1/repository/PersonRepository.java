@@ -17,4 +17,8 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     @Query("select p from Person p where upper(p.name) = upper(?1) and upper(p.surname) = upper(?2)")
     Optional<List<Person>> findByNameIgnoreCaseAndSurnameIgnoreCase(String name, String surname);
 
+    @Query("select p from Person p where upper(p.name) = upper(?1)")
+    Optional<Person> getByName(String name);
+
+
 }
